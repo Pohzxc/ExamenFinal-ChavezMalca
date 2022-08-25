@@ -1,3 +1,4 @@
+package unmsm.mantenimiento.exfinal;
 import java.util.ArrayList;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -85,10 +86,10 @@ public class ChessGameEngine{
     public boolean playerHasLegalMoves( int playerNum ){
         ArrayList<ChessGamePiece> pieces;
         if ( playerNum == 1 ){
-            pieces = board.getAllWhitePieces();
+            pieces = (ArrayList<ChessGamePiece>) board.getAllWhitePieces();
         }
         else if ( playerNum == 2 ){
-            pieces = board.getAllBlackPieces();
+            pieces = (ArrayList<ChessGamePiece>) board.getAllBlackPieces();
         }
         else
         {
@@ -113,18 +114,20 @@ public class ChessGameEngine{
         }
         if ( currentPlayer == 2 ) // black player
         {
+            boolean rt1 = false;
             if ( currentPiece.getColorOfPiece() == ChessGamePiece.BLACK ){
-                return true;
+                rt1 = true;
             }
-            return false;
+            return rt1;
         }
         else
         // white player
         {
+            boolean rt2 = false;
             if ( currentPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
-                return true;
+                rt2 = true;
             }
-            return false;
+            return rt2;
         }
     }
     /**
@@ -167,7 +170,6 @@ public class ChessGameEngine{
         else
         {
             board.resetBoard( false );
-            // System.exit(0);
         }
     }
     /**

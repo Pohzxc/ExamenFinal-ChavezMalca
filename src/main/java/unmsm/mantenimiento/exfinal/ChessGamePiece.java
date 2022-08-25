@@ -1,6 +1,7 @@
 package unmsm.mantenimiento.exfinal;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -17,7 +18,7 @@ import javax.swing.ImageIcon;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public abstract class ChessGamePiece {
+public abstract class ChessGamePiece implements Serializable{
     private boolean skipMoveGeneration;
     private int pieceColor;
     private ImageIcon pieceImage;
@@ -280,11 +281,9 @@ public abstract class ChessGamePiece {
     // MODIFICADO
     protected ArrayList<String> calculateDirectionMoves(
             ChessGameBoard board,
-            int numMoves, String firstDirection, String secondDirection) {
-        int piece_row = 0;
-        int piece_col = 0;
+            int numMoves) {
 
-        ArrayList<String> moves = new ArrayList<String>();
+        ArrayList<String> moves = new ArrayList<>();
         int count = 0;
 
         if (!isPieceOnScreen()) {
@@ -318,9 +317,7 @@ public abstract class ChessGamePiece {
     protected ArrayList<String> calculateNorthWestMoves(
             ChessGameBoard board,
             int numMoves) {
-        String firstDirection = "North";
-        String secondDirection = "West";
-        return calculateDirectionMoves(board, numMoves, firstDirection, secondDirection);
+        return calculateDirectionMoves(board, numMoves);
     }
 
     // ----------------------------------------------------------
@@ -337,9 +334,7 @@ public abstract class ChessGamePiece {
     protected ArrayList<String> calculateNorthEastMoves(
             ChessGameBoard board,
             int numMoves) {
-        String firstDirection = "North";
-        String secondDirection = "East";
-        return calculateDirectionMoves(board, numMoves, firstDirection, secondDirection);
+        return calculateDirectionMoves(board, numMoves);
     }
 
     // ----------------------------------------------------------
@@ -356,9 +351,7 @@ public abstract class ChessGamePiece {
     protected ArrayList<String> calculateSouthWestMoves(
             ChessGameBoard board,
             int numMoves) {
-        String firstDirection = "South";
-        String secondDirection = "West";
-        return calculateDirectionMoves(board, numMoves, firstDirection, secondDirection);
+        return calculateDirectionMoves(board, numMoves);
     }
 
     // ----------------------------------------------------------
@@ -375,9 +368,7 @@ public abstract class ChessGamePiece {
     protected ArrayList<String> calculateSouthEastMoves(
             ChessGameBoard board,
             int numMoves) {
-        String firstDirection = "South";
-        String secondDirection = "East";
-        return calculateDirectionMoves(board, numMoves, firstDirection, secondDirection);
+        return calculateDirectionMoves(board, numMoves);
     }
 
     // FINAL MODIFICADO
